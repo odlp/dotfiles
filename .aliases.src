@@ -1,0 +1,3 @@
+alias be="bundle exec"
+alias fs="forego start"
+alias rc="bundle exec rails c"

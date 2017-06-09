@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+
+DOTFILE_DIR = File.expand_path("../", __dir__)
+HOME_DIR = File.expand_path("~")
+
+manual_steps = []
+
+# Link dotfiles
+dotfiles = Dir.glob(File.expand_path(".[a-zA-Z]*.src", DOTFILE_DIR))
+dotfiles.each do |src|
+  dest_file_name = File.basename(src).gsub(/.src$/, "")
+  dest = File.expand_path(dest_file_name, HOME_DIR)
+  File.delete(dest) if File.symlink?(dest)
+  File.symlink(src, dest)
+end
+
+# Create files from templates
+templates = Dir.glob(File.expand_path(".*.template", DOTFILE_DIR))
+templates.each do |src|
+  dest_file_name = File.basename(src).gsub(/.template$/, "")
+  dest = File.expand_path(dest_file_name, HOME_DIR)
+
+  next if File.exist?(dest)
+
+  FileUtils.cp(src, dest)
+  manual_steps << "Fill in #{dest}"
+end
+
+# Setup git name and email
+local_git_config = File.expand_path(".gitconfig.local.src", DOTFILE_DIR)
+unless File.exist?(local_git_config)
+  puts "Git name:"
+  git_name = gets.chomp
+  puts "Git email:"
+  git_email = gets.chomp
+
+  `git config --file "#{local_git_config}" user.name "#{git_name}"`
+  `git config --file "#{local_git_config}" user.email "#{git_email}"`
+end
+
+# Things left to do
+manual_steps.each do |step|
+  puts "- #{step}"
+end
