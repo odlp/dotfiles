@@ -8,7 +8,7 @@ HOME_DIR = File.expand_path("~")
 manual_steps = []
 
 # Link dotfiles
-dotfiles = Dir.glob(File.expand_path(".[a-zA-Z]*.src", DOTFILE_DIR))
+dotfiles = Dir.glob(File.expand_path(".*.src", DOTFILE_DIR))
 dotfiles.each do |src|
   dest_file_name = File.basename(src).gsub(/.src$/, "")
   dest = File.expand_path(dest_file_name, HOME_DIR)
