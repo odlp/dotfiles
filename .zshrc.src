@@ -15,3 +15,4 @@ eval "$(rbenv init - --no-rehash)"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export GOPATH=~/workspace/go
 export PATH="$PATH:$GOPATH/bin"
+export BUNDLER_EDITOR=atom
