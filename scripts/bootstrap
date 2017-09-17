@@ -7,13 +7,17 @@ HOME_DIR = File.expand_path("~")
 
 manual_steps = []
 
-# Link dotfiles
-dotfiles = Dir.glob(File.expand_path(".*.src", DOTFILE_DIR))
-dotfiles.each do |src|
+def link_src_file(src)
   dest_file_name = File.basename(src).gsub(/.src$/, "")
   dest = File.expand_path(dest_file_name, HOME_DIR)
   File.delete(dest) if File.symlink?(dest)
   File.symlink(src, dest)
+end
+
+# Link dotfiles
+dotfiles = Dir.glob(File.expand_path(".*.src", DOTFILE_DIR))
+dotfiles.each do |src|
+  link_src_file(src)
 end
 
 # Create files from templates
@@ -38,6 +42,8 @@ unless File.exist?(local_git_config)
 
   `git config --file "#{local_git_config}" user.name "#{git_name}"`
   `git config --file "#{local_git_config}" user.email "#{git_email}"`
+
+  link_src_file(local_git_config)
 end
 
 # Things left to do
