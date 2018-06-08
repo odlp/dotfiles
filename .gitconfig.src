@@ -7,8 +7,11 @@
   ap = add --patch
   ds = diff --staged
   ci = commit -v
+  cia = commit --amend --no-edit
   co = checkout
   st = status
+  dc = duet-commit
+  rc = rebase --continue
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
