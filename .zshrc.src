@@ -18,3 +18,7 @@ export PATH="$PATH:$GOPATH/bin"
 export BUNDLER_EDITOR=atom
 export ENABLE_BOOTSNAP=1
 export DISABLE_SPRING=1
+
+serve_dir() {
+  ruby -run -e httpd . -p "${1:-8080}"
+}
