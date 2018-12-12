@@ -1,5 +1,7 @@
 alias be="bundle exec"
+alias ber="bundle exec rake"
 alias fs="forego start"
 alias rc="bundle exec rails c"
 alias focus="bundle exec rspec --tag focus"
 alias gap="git add -N . && git add -p"
+alias git-tidy="git branch --merged | egrep -v '(^\*|master|dev)' | xargs git branch -d"
