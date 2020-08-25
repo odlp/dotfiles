@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="oli"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git)
 
@@ -10,15 +10,24 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
 source ~/.secrets
 
-eval "$(rbenv init - --no-rehash)"
-
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export GOPATH=~/workspace/go
-export PATH="$PATH:$GOPATH/bin"
 export BUNDLER_EDITOR=atom
 export ENABLE_BOOTSNAP=1
 export DISABLE_SPRING=1
 
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+eval "$(rbenv init - --no-rehash)"
+
 serve_dir() {
   ruby -run -e httpd . -p "${1:-8080}"
 }
+
+gem_gh() {
+  url=$(bundle info "$1" | grep -m1 github | cut -d' ' -f2)
+  open "$url"
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

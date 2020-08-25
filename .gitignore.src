@@ -12,3 +12,4 @@ tmp/**/*
 *.pyc
 .gitconfig.local*
 .vscode/
+.refresha.yml
