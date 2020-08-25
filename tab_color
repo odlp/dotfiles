@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby --disable-gems
+
+require "digest"
+
+seed = Digest::SHA256.hexdigest(Dir.pwd).hex
+generator = Random.new(seed)
+
+# https://iterm2.com/documentation-escape-codes.html
+["red", "green", "blue"].each do |color|
+  print "\033]6;1;bg;#{color};brightness;#{generator.rand(0..255)}\a"
+end
