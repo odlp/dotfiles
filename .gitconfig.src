@@ -15,17 +15,20 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+  [diff]
+  colorMoved = default
 [merge]
+  conflictstyle = diff3
   ff = only
 [fetch]
   prune = true
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
 [push]
   default = simple
   followTags = true
+  autoSetupRemote = true

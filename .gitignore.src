@@ -13,3 +13,4 @@ tmp/**/*
 .gitconfig.local*
 .vscode/
 .refresha.yml
+.idea
