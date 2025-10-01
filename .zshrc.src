@@ -6,12 +6,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.aliases
 source ~/.secrets
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export GOPATH=~/workspace/go
 export BUNDLER_EDITOR=atom
 export ENABLE_BOOTSNAP=1
 export DISABLE_SPRING=1
