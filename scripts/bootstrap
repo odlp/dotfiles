@@ -10,7 +10,7 @@ manual_steps = []
 def link_src_file(src)
   dest_file_name = File.basename(src).gsub(/.src$/, "")
   dest = File.expand_path(dest_file_name, HOME_DIR)
-  File.delete(dest) if File.symlink?(dest)
+  File.delete(dest) if (File.symlink?(dest) || File.exist?(dest))
   File.symlink(src, dest)
 end
 
