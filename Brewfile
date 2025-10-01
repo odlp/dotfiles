@@ -5,7 +5,6 @@ brew "git"
 brew "httpie"
 brew "jq"
 brew "libyaml"
-brew "mitmproxy"
 brew "nvm"
 brew "postgresql", restart_service: true
 brew "ruby-build", args: ["HEAD"]
@@ -16,3 +15,4 @@ brew "the_silver_searcher"
 brew "yarn"
 brew "zsh"
 brew "zsh-syntax-highlighting"
+cask "mitmproxy"
