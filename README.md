@@ -8,7 +8,6 @@ git clone https://github.com/odlp/dotfiles.git ~/.dotfiles
 ## Homebrew
 
 ```sh
-brew tap Homebrew/bundle
 brew bundle --file=~/.dotfiles/Brewfile
 ```
 
