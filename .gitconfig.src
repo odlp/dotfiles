@@ -5,6 +5,7 @@
 [alias]
   aa = add --all
   ap = add --patch
+  br = branch --sort=-committerdate
   ds = diff --staged
   ci = commit -v
   cia = commit --amend --no-edit
@@ -21,10 +22,10 @@
 [delta]
   navigate = true
   light = false
-  [diff]
+[diff]
   colorMoved = default
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   ff = only
 [fetch]
   prune = true
@@ -32,3 +33,5 @@
   default = simple
   followTags = true
   autoSetupRemote = true
+[init]
+  defaultBranch = main
